@@ -1,0 +1,64 @@
+.aa{
+         border: 1px solid #1253d5;
+
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+
+  background-color: rgb(255, 255, 255);
+  outline: none;
+  border-radius: 16px;
+}
+.page-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: "Roboto", Arial, sans-serif;
+  line-height: 1.7;
+  color: #333;
+  background: #fff;
+}
+
+.page-container h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.page-container h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: #444;
+  border-left: 4px solid #007bff;
+  padding-left: 10px;
+}
+
+.page-container p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.page-container strong {
+  color: #007bff;
+}
+
+.page-container a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.page-container a:hover {
+  text-decoration: underline;
+}
+
+.page-container ul {
+  margin: 10px 0 20px 20px;
+  padding: 0;
+}
+
+.page-container li {
+  margin-bottom: 8px;
+}
