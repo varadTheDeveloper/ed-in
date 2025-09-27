@@ -1,0 +1,9 @@
+.i{
+     border: 1px solid #1253d5;
+
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+
+  background-color: rgb(255, 255, 255);
+  outline: none;
+  border-radius: 16px;
+}
