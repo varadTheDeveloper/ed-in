@@ -2,9 +2,13 @@ import { useState } from 'react'
 
 import './Download.css'
 
+import { useLocation } from "react-router-dom";
+
+
 function Download() {
   const [count, setCount] = useState(0)
-
+  const location = useLocation();
+  const { branch, semester, scheme } = location.state || {};
  const data = [
     { year: 2025, month: "May", link: "#" },
     { year: 2024, month: "May", link: "#" },

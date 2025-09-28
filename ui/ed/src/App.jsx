@@ -19,6 +19,8 @@ function App() {
        <Routes>
          <Route path="/" element={<Start/>} />
             <Route path="/contact" element={<Contact />} />
+                    <Route path="/downloads" element={<Download />} />
+
         {/*
       
             <Route path="/download" element={ <Download/>} /> */}

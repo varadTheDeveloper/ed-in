@@ -1,16 +1,32 @@
 import { useState } from "react";
 import "./Start.css";
-
+import { useNavigate } from "react-router-dom";
 function Start() {
   const [semester, setSemester] = useState(""); // initial empty value
   const [branch, setBranch] = useState("");
   const [scheme, setScheme] = useState("");
-  const handleSubmit = (e) => {
-    e.preventDefault(); // prevent page refresh
-    console.log("Branch:", branch);
-    console.log("Semester:", semester);
-    console.log("scheme:", scheme);
-  };
+   const navigate = useNavigate();
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const response = await fetch("http://localhost:3000/api/get-papers", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ scheme, branch, semester }),
+    });
+
+    const result = await response.json();
+    console.log(result);
+      navigate("/downloads", {
+        state: { branch, semester, scheme },
+      });
+  } catch (error) {
+    alert("Try again");
+  }
+};
+
+    
 
   const handleReset = () => {
     setBranch("");
