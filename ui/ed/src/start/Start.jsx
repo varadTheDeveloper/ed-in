@@ -3,7 +3,7 @@ import "./Start.css";
 import { useNavigate } from "react-router-dom";
 
 function Start() {
-  const [semester, setSemester] = useState(""); 
+  const [semester, setSemester] = useState("");
   const [branch, setBranch] = useState("");
   const [scheme, setScheme] = useState("");
   const navigate = useNavigate();
@@ -61,42 +61,41 @@ function Start() {
           required
         >
           <option value="">Select Branch</option>
-          <option value="Diploma In Civil Engineering">Computer Engineering</option>
-          <option value="Electronics and Telecommunication">
-            Electronics and Telecommunication
+            <option value="Diploma In Computer Engineering">
+            Diploma In Computer Engineering
           </option>
-          <option value="Electronics Engineering">
-            Electronics Engineering
+           <option value="Diploma In Information Technology">
+            Diploma In Information Technology
           </option>
-          <option value="Mechatronics Engineering">
-            Mechatronics Engineering
+              <option value="Diploma In Data Sciences">
+            Diploma In Data Sciences
           </option>
-          <option value="Instrumentation Engineering">
-            Instrumentation Engineering
+          <option value="Diploma In Electrical Engineering">
+            Diploma In Electrical Engineering
           </option>
-          <option value="Information Technology">Information Technology</option>
-          <option value="Production Engineering">Production Engineering</option>
-          <option value="Mechanical Engineering">Mechanical Engineering</option>
-          <option value="Electrical Engineering">Electrical Engineering</option>
-          <option value="Chemical Engineering">Chemical Engineering</option>
-          <option value="Civil Engineering">Civil Engineering</option>
-          <option value="Automobile Engineering">Automobile Engineering</option>
-          <option value="Biotechnology Engineering">
-            Biotechnology Engineering
-          </option>
-          <option value="Biomedical Engineering">Biomedical Engineering</option>
           <option value="Diploma In Artificial Intelligence and Machine Learning">
-            First Year Engineering
+            Diploma In Artificial Intelligence and Machine Learning
           </option>
-          <option value="Computer Engineering AIDS">
-            Computer Engineering AIDS
+        
+          <option value="Diploma In Civil Engineering">
+            Diploma In Civil Engineering
           </option>
-          <option value="Electronics and Computer Science">
-            Electronics and Computer Science
+      
+          <option value="Diploma In Electronics & Tele-communication Engg">
+            Diploma In Electronics & Tele-communication Engg
           </option>
-          <option value="Civil & Infrastructure Engineering">
-            Civil & Infrastructure Engineering
+         
+          <option value="Diploma In Mechanical Engineering">
+            Diploma In Mechanical Engineering
           </option>
+          <option value="Diploma In Production Engineering">
+            Diploma In Production Engineering
+          </option>
+          <option value="Chemical Engineering">Chemical Engineering</option>
+          <option value="Diploma In Civil Engineering">
+            Diploma In Civil Engineering
+          </option>
+  
         </select>
       </div>
 
