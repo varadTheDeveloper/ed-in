@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
-import Start from "./start/start";
 import Download from "./pages/download";
+import Start from "./start/Start";
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
 import About from "./pages/About";
