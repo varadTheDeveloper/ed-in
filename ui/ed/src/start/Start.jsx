@@ -15,7 +15,7 @@ function Start() {
       // Call backend API with query params
       const query = new URLSearchParams({ scheme, branch, semester });
       const response = await fetch(
-        `http://localhost:3000/api/papers?${query.toString()}`
+        `http://:3000/api/papers?${query.toString()}`
       );
       const result = await response.json();
 
