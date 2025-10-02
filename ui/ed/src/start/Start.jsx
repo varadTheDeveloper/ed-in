@@ -1,32 +1,35 @@
 import { useState } from "react";
 import "./Start.css";
 import { useNavigate } from "react-router-dom";
+
 function Start() {
-  const [semester, setSemester] = useState(""); // initial empty value
+  const [semester, setSemester] = useState(""); 
   const [branch, setBranch] = useState("");
   const [scheme, setScheme] = useState("");
-   const navigate = useNavigate();
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const navigate = useNavigate();
 
-  try {
-    const response = await fetch("http://localhost:3000/api/get-papers", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ scheme, branch, semester }),
-    });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    const result = await response.json();
-    console.log(result);
+    try {
+      // Call backend API with query params
+      const query = new URLSearchParams({ scheme, branch, semester });
+      const response = await fetch(
+        `http://localhost:3000/api/papers?${query.toString()}`
+      );
+      const result = await response.json();
+
+      console.log("📥 Papers from DB (grouped):", result);
+
+      // Navigate to downloads with grouped papers
       navigate("/downloads", {
-        state: { branch, semester, scheme },
+        state: { branch, semester, scheme, papers: result },
       });
-  } catch (error) {
-    alert("Try again");
-  }
-};
-
-    
+    } catch (error) {
+      console.error(error);
+      alert("Failed to fetch papers. Try again.");
+    }
+  };
 
   const handleReset = () => {
     setBranch("");
@@ -36,6 +39,7 @@ const handleSubmit = async (e) => {
 
   return (
     <form onSubmit={handleSubmit} onReset={handleReset}>
+      {/* Scheme */}
       <div className="a3">
         <select
           id="se"
@@ -43,10 +47,12 @@ const handleSubmit = async (e) => {
           onChange={(e) => setScheme(e.target.value)}
           required
         >
-          <option value="">Select Scheme </option>
-          <option value="K ( Regular Diploma )">K ( Regular Diploma )</option>
+          <option value="">Select Scheme</option>
+          <option value="K (Regular Diploma)">K ( Regular Diploma )</option>
         </select>
       </div>
+
+      {/* Branch */}
       <div className="a2">
         <select
           id="courses"
@@ -55,7 +61,7 @@ const handleSubmit = async (e) => {
           required
         >
           <option value="">Select Branch</option>
-          <option value="Computer Engineering">Computer Engineering</option>
+          <option value="Diploma In Civil Engineering">Computer Engineering</option>
           <option value="Electronics and Telecommunication">
             Electronics and Telecommunication
           </option>
@@ -79,7 +85,9 @@ const handleSubmit = async (e) => {
             Biotechnology Engineering
           </option>
           <option value="Biomedical Engineering">Biomedical Engineering</option>
-          <option value="First Year Engineering">First Year Engineering</option>
+          <option value="Diploma In Artificial Intelligence and Machine Learning">
+            First Year Engineering
+          </option>
           <option value="Computer Engineering AIDS">
             Computer Engineering AIDS
           </option>
@@ -92,6 +100,7 @@ const handleSubmit = async (e) => {
         </select>
       </div>
 
+      {/* Semester */}
       <div className="a1">
         <select
           id="semester"
@@ -100,6 +109,8 @@ const handleSubmit = async (e) => {
           required
         >
           <option value="">Select Semester</option>
+          <option value="1">Semester 1</option>
+          <option value="2">Semester 2</option>
           <option value="3">Semester 3</option>
           <option value="4">Semester 4</option>
           <option value="5">Semester 5</option>
@@ -107,7 +118,8 @@ const handleSubmit = async (e) => {
         </select>
       </div>
 
-      <div className="buttons" disabled={!branch || !semester}>
+      {/* Buttons */}
+      <div className="buttons" disabled={!branch || !semester || !scheme}>
         <button type="submit">Submit</button>
         <button type="reset">Reset</button>
       </div>

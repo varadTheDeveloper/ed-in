@@ -1,53 +1,61 @@
-import { useState } from 'react'
-
-import './Download.css'
-
 import { useLocation } from "react-router-dom";
-
+import "./Download.css";
 
 function Download() {
-  const [count, setCount] = useState(0)
   const location = useLocation();
-  const { branch, semester, scheme } = location.state || {};
- const data = [
-    { year: 2025, month: "May", link: "#" },
-    { year: 2024, month: "May", link: "#" },
-    { year: 2024, month: "December", link: "#" },
-    { year: 2023, month: "May", link: "#" },
-    { year: 2023, month: "December", link: "#" },
-    { year: 2022, month: "December", link: "#" },
-    { year: 2022, month: "May", link: "#" },
-  ];
+  const { papers = [] } = location.state || {};
+
+  // Group by subject
+  const groupedBySubject = papers.reduce((acc, paper) => {
+    if (!acc[paper.subject]) {
+      acc[paper.subject] = [];
+    }
+    acc[paper.subject].push(paper);
+    return acc;
+  }, {});
 
   return (
-    <div className="table-container">
-      <h2 className="table-title">
-        ENGINEERING MATHEMATICS-III (REV-2019 ‘C’ SCHEME)
-      </h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Year</th>
-            <th>Month</th>
-            <th>Link</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((row, index) => (
-            <tr key={index}>
-              <td>{row.year}</td>
-              <td>{row.month}</td>
-              <td>
-                <a href={row.link} className="download-btn">
-                  Download
-                </a>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="download-page">
+      <h2 className="page-title">Available Papers</h2>
+
+      {Object.keys(groupedBySubject).length === 0 ? (
+        <p className="no-papers">No papers found</p>
+      ) : (
+        Object.entries(groupedBySubject).map(([subject, subjectPapers]) => (
+          <div key={subject} className="subject-card">
+            <h3 className="subject-title">{subject}</h3>
+            <table className="papers-table">
+              <thead>
+                <tr>
+                  <th>Year</th>
+                  <th>Month</th>
+                  <th>Download</th>
+                </tr>
+              </thead>
+              <tbody>
+                {subjectPapers.map((paper, index) => (
+                  <tr key={index}>
+                    <td>{paper.year}</td>
+                    <td>{paper.month}</td>
+                    <td>
+                      <a
+                        href={paper.downloadUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="download-btn"
+                      >
+                        Download
+                      </a>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ))
+      )}
     </div>
   );
 }
 
-export default Download
+export default Download;
