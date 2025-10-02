@@ -1,87 +1,71 @@
-.table-container {
-  max-width: 800px;
-  margin: 40px auto;
-  border: 1px solid #d1d9e6;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #ffffff;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+.download-page {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
 }
 
-/* Title */
-.table-title {
-  background-color: #1e3a8a; /* Deep professional blue */
-  color: #ffffff;
+.page-title {
   text-align: center;
-  padding: 14px;
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  margin-bottom: 30px;
+  color: #222;
 }
 
-/* Table base */
-table {
+.no-papers {
+  text-align: center;
+  font-size: 16px;
+  color: #777;
+}
+
+.subject-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
+  padding: 20px;
+  transition: transform 0.2s ease;
+}
+
+.subject-card:hover {
+  transform: translateY(-3px);
+}
+
+.subject-title {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #444;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 5px;
+}
+
+.papers-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-th {
-  background-color: #f1f5f9; /* Light gray-blue */
-  padding: 12px;
+.papers-table th,
+.papers-table td {
+  padding: 10px 12px;
   text-align: center;
-  font-weight: 600;
-  color: #1e293b; /* Dark gray text */
-  border-bottom: 2px solid #e2e8f0;
+  border-bottom: 1px solid #eee;
 }
 
-td {
-  padding: 12px;
-  text-align: center;
-  color: #334155;
-  border-bottom: 1px solid #e2e8f0;
+.papers-table th {
+  background: #f8f9fa;
+  font-weight: bold;
 }
 
-/* Alternate row colors */
-tr:nth-child(even) {
-  background-color: #f8fafc; /* Soft light gray */
-}
-
-tr:nth-child(odd) {
-  background-color: #ffffff;
-}
-
-/* Download Button */
 .download-btn {
-  background-color: #2563eb; /* Modern blue */
+  display: inline-block;
+  background: #007bff;
   color: white;
-  padding: 6px 14px;
+  padding: 6px 12px;
   border-radius: 6px;
   text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  transition: background 0.3s ease, transform 0.2s ease;
-  display: inline-block;
+  transition: background 0.2s;
 }
 
 .download-btn:hover {
-  background-color: #1e40af; /* Darker hover blue */
-  transform: translateY(-2px);
-}
-
-/* Responsive (for mobile) */
-@media (max-width: 600px) {
-  .table-container {
-    max-width: 100%;
-    margin: 20px;
-  }
-
-  table, th, td {
-    font-size: 14px;
-  }
-
-  .download-btn {
-    padding: 5px 10px;
-    font-size: 13px;
-  }
+  background: #0056b3;
 }

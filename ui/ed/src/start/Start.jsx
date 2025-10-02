@@ -1,15 +1,34 @@
 import { useState } from "react";
 import "./Start.css";
+import { useNavigate } from "react-router-dom";
 
 function Start() {
-  const [semester, setSemester] = useState(""); // initial empty value
+  const [semester, setSemester] = useState(""); 
   const [branch, setBranch] = useState("");
   const [scheme, setScheme] = useState("");
-  const handleSubmit = (e) => {
-    e.preventDefault(); // prevent page refresh
-    console.log("Branch:", branch);
-    console.log("Semester:", semester);
-    console.log("scheme:", scheme);
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      // Call backend API with query params
+      const query = new URLSearchParams({ scheme, branch, semester });
+      const response = await fetch(
+        `http://localhost:3000/api/papers?${query.toString()}`
+      );
+      const result = await response.json();
+
+      console.log("📥 Papers from DB (grouped):", result);
+
+      // Navigate to downloads with grouped papers
+      navigate("/downloads", {
+        state: { branch, semester, scheme, papers: result },
+      });
+    } catch (error) {
+      console.error(error);
+      alert("Failed to fetch papers. Try again.");
+    }
   };
 
   const handleReset = () => {
@@ -20,6 +39,7 @@ function Start() {
 
   return (
     <form onSubmit={handleSubmit} onReset={handleReset}>
+      {/* Scheme */}
       <div className="a3">
         <select
           id="se"
@@ -27,10 +47,12 @@ function Start() {
           onChange={(e) => setScheme(e.target.value)}
           required
         >
-          <option value="">Select Scheme </option>
-          <option value="K ( Regular Diploma )">K ( Regular Diploma )</option>
+          <option value="">Select Scheme</option>
+          <option value="K (Regular Diploma)">K ( Regular Diploma )</option>
         </select>
       </div>
+
+      {/* Branch */}
       <div className="a2">
         <select
           id="courses"
@@ -39,7 +61,7 @@ function Start() {
           required
         >
           <option value="">Select Branch</option>
-          <option value="Computer Engineering">Computer Engineering</option>
+          <option value="Diploma In Civil Engineering">Computer Engineering</option>
           <option value="Electronics and Telecommunication">
             Electronics and Telecommunication
           </option>
@@ -63,7 +85,9 @@ function Start() {
             Biotechnology Engineering
           </option>
           <option value="Biomedical Engineering">Biomedical Engineering</option>
-          <option value="First Year Engineering">First Year Engineering</option>
+          <option value="Diploma In Artificial Intelligence and Machine Learning">
+            First Year Engineering
+          </option>
           <option value="Computer Engineering AIDS">
             Computer Engineering AIDS
           </option>
@@ -76,6 +100,7 @@ function Start() {
         </select>
       </div>
 
+      {/* Semester */}
       <div className="a1">
         <select
           id="semester"
@@ -84,6 +109,8 @@ function Start() {
           required
         >
           <option value="">Select Semester</option>
+          <option value="1">Semester 1</option>
+          <option value="2">Semester 2</option>
           <option value="3">Semester 3</option>
           <option value="4">Semester 4</option>
           <option value="5">Semester 5</option>
@@ -91,7 +118,8 @@ function Start() {
         </select>
       </div>
 
-      <div className="buttons" disabled={!branch || !semester}>
+      {/* Buttons */}
+      <div className="buttons" disabled={!branch || !semester || !scheme}>
         <button type="submit">Submit</button>
         <button type="reset">Reset</button>
       </div>
