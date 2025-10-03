@@ -10,7 +10,7 @@ function Header() {
       <div className="header-top">
         <img src={logo} alt="Logo" className="logo" />
         
-        <h1 className="portal-name">msbtequestionpapers.in</h1>
+        <h1 className="portal-name">msbtepapers.in</h1>
        
       </div>
 

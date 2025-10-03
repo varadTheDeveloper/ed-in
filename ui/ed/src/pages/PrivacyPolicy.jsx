@@ -84,8 +84,8 @@ function PrivacyPolicy() {
       <p>
         If you have any questions about this Privacy Policy, you can contact us
         at:{" "}
-        <a href="mailto:contact@msbtequestionpapers.in">
-          contact@msbtequestionpapers.in
+        <a href="mailto:bmr74242@gmail.com">
+       bmr74242@gmail.com
         </a>
       </p>
     </div>

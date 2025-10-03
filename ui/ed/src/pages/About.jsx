@@ -27,7 +27,7 @@ function About() {
       <h2 style={{ marginTop: "30px" }}>Contact</h2>
       <p>
         For suggestions or feedback, you can reach out to us at: 
-        <a href="mailto:contact@msbte-pyq.com"> contact@msbte-pyq.com</a>
+        <a href="mailto:bmr74242@gmail.com">bmr74242@gmail.com</a>
       </p>
     </div>
   );

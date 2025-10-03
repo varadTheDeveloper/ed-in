@@ -65,7 +65,7 @@ function Contact() {
       </form>
 
       <p style={{ marginTop: "30px", textAlign: "center" }}>
-        Or email us directly at: <a href="mailto:contact@msbte-pyq.com">contact@msbte-pyq.com</a>
+        Or email us directly at: <a href="mailto:bmr74242@gmail.com">bmr74242@gmail.com</a>
       </p>
     </div>
   );

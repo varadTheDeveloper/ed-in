@@ -11,6 +11,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
 import Login from "./pages/Login";
 import Admin from "./pages/Admin";
+import NotFound from "./pages/NotFound";
 function App() {
   const [count, setCount] = useState(0);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -22,6 +23,7 @@ function App() {
         <Route path="/" element={<Start />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/downloads" element={<Download />} />
+
         <Route
           path="/login"
           element={<Login setIsAuthenticated={setIsAuthenticated} />}
@@ -45,6 +47,7 @@ function App() {
         <Route path="/policy" element={<PrivacyPolicy />} />
         <Route path="/about" element={<About />} />
         <Route path="/terms" element={<Terms />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       <Footer />
